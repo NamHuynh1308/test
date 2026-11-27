@@ -94,3 +94,43 @@ def check_higher_lower(guess, current, next_card):
 
 
 
+# --- Higher or Lower (card game) ---
+
+RANKS = ("2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A")
+SUITS = ("hearts", "diamonds", "clubs", "spades")
+
+
+def new_deck():
+    """Return a shuffled 52-card deck as a list of (rank, suit) tuples."""
+    deck = [(rank, suit) for suit in SUITS for rank in RANKS]
+    random.shuffle(deck)
+    return deck
+
+
+def draw_card(deck):
+    """Remove and return the top card of the deck. Raises ValueError if it is empty."""
+    if not deck:
+        raise ValueError("The deck is empty.")
+    return deck.pop()
+
+
+def card_value(card):
+    """Return the numeric value of a card: 2-10 as numbered, J=11, Q=12, K=13, A=14."""
+    return RANKS.index(card[0]) + 2
+
+
+def card_name(card):
+    """Return a readable name for a card, such as 'Q of hearts'."""
+    return f"{card[0]} of {card[1]}"
+
+
+def check_higher_lower(guess, current, next_card):
+    """Return 'correct', 'wrong' or 'tie' for a guess of 'higher' or 'lower'."""
+    guess = guess.lower()
+    if guess not in ("higher", "lower"):
+        raise ValueError("Guess must be 'higher' or 'lower'.")
+    current_value, next_value = card_value(current), card_value(next_card)
+    if current_value == next_value:
+        return "tie"
+    went_higher = next_value > current_value
+    return "correct" if went_higher == (guess == "higher") else "wrong"
