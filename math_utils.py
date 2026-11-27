@@ -120,6 +120,18 @@ def distance(x1, y1, x2, y2):
     return ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
 
 
+def is_even(n):
+    """Return True if the integer n is even, otherwise False."""
+    return n % 2 == 0
+
+
+def percentage(part, whole):
+    """Return what percent part is of whole. Raises ZeroDivisionError if whole is 0."""
+    if whole == 0:
+        raise ZeroDivisionError("Cannot take a percentage of zero.")
+    return part / whole * 100
+
+
 
 
 
