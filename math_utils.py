@@ -1,5 +1,7 @@
 """Basic math functions."""
 
+import math
+
 
 def add(a, b):
     """Add two numbers."""
@@ -130,6 +132,35 @@ def percentage(part, whole):
     if whole == 0:
         raise ZeroDivisionError("Cannot take a percentage of zero.")
     return part / whole * 100
+
+
+def circle_area(radius):
+    """Return the area of a circle with the given radius. Raises ValueError if negative."""
+    if radius < 0:
+        raise ValueError("Radius must be non-negative.")
+    return math.pi * radius ** 2
+
+
+def celsius_to_fahrenheit(celsius):
+    """Convert a temperature from Celsius to Fahrenheit."""
+    return celsius * 9 / 5 + 32
+
+
+def fahrenheit_to_celsius(fahrenheit):
+    """Convert a temperature from Fahrenheit to Celsius."""
+    return (fahrenheit - 32) * 5 / 9
+
+
+def rectangle_area(width, height):
+    """Return the area of a rectangle. Raises ValueError if a side is negative."""
+    if width < 0 or height < 0:
+        raise ValueError("Width and height must be non-negative.")
+    return width * height
+
+
+def hypotenuse(a, b):
+    """Return the hypotenuse of a right triangle with legs a and b."""
+    return math.sqrt(a ** 2 + b ** 2)
 
 
 

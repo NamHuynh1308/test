@@ -1,0 +1,58 @@
+{
+  "schema": "vibeit.review-capsule",
+  "version": 1,
+  "id": "921ba003-e81f-4a4b-aaa1-3a0a3bd75f78",
+  "packageId": "9e6f6f54-119a-4fd7-bf1d-ba12a28df9ff",
+  "createdAt": "2026-11-27T04:31:07.618Z",
+  "commit": "7ba71ce2179bf6ea1dc10658d01088a5fa756137",
+  "title": "5th test",
+  "purpose": "sdf",
+  "constraints": "sdf",
+  "contributions": [
+    {
+      "id": "annotation-1795752907774-1-cuui1y",
+      "path": "math_utils.py",
+      "blob": "85737693a2ce001837c5d328f5a6856fcb5c5d36",
+      "ranges": [
+        {
+          "startLine": 122,
+          "startCharacter": 0,
+          "endLine": 124,
+          "endCharacter": 21
+        },
+        {
+          "startLine": 127,
+          "startCharacter": 0,
+          "endLine": 131,
+          "endCharacter": 29
+        }
+      ],
+      "contentHash": "c54ab5eeeb027563880f1f13b159a5a89de73b625ffcf2d717d5ed650c54e34a",
+      "agent": "Claude",
+      "model": "claude-opus-5-5",
+      "provenance": "inferred-by-correlation",
+      "verificationStatus": "Untested",
+      "promptCount": 1,
+      "revisionCount": 1,
+      "prompts": [
+        "Give another 2"
+      ],
+      "revisions": [
+        {
+          "version": 1,
+          "recordedAt": "2026-11-27T04:15:07.774Z",
+          "source": "Claude",
+          "model": "claude-opus-5-5",
+          "provenance": "inferred-by-correlation",
+          "prompt": "Give another 2",
+          "code": "def is_even(n):\n    \"\"\"Return True if the integer n is even, otherwise False.\"\"\"\n    return n % 2 == 0\n\ndef percentage(part, whole):\n    \"\"\"Return what percent part is of whole. Raises ZeroDivisionError if whole is 0.\"\"\"\n    if whole == 0:\n        raise ZeroDivisionError(\"Cannot take a percentage of zero.\")\n    return part / whole * 100"
+        }
+      ]
+    }
+  ],
+  "disclosure": {
+    "prompts": true,
+    "revisionCode": true
+  },
+  "warning": "Git matching confirms selected text exists at a commit; it does not prove AI authorship, tests, or the commit that introduced the change."
+}
