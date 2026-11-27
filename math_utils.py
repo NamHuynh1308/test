@@ -35,39 +35,67 @@ def modulo(a, b):
     return a % b
 
 
-def main():
-    """Run simple checks on each function and report the results."""
-    tests = [
-        ("add(2, 3)", add(2, 3), 5),
-        ("subtract(10, 4)", subtract(10, 4), 6),
-        ("multiply(3, 7)", multiply(3, 7), 21),
-        ("divide(10, 4)", divide(10, 4), 2.5),
-        ("power(2, 10)", power(2, 10), 1024),
-        ("modulo(17, 5)", modulo(17, 5), 2),
-    ]
-
-    passed = 0
-    for label, result, expected in tests:
-        ok = result == expected
-        passed += ok
-        status = "PASS" if ok else "FAIL"
-        print(f"[{status}] {label} = {result} (expected {expected})")
-
-    # Division and modulo by zero should raise ZeroDivisionError.
-    for label, func in (("divide(1, 0)", divide), ("modulo(1, 0)", modulo)):
-        try:
-            func(1, 0)
-            print(f"[FAIL] {label} did not raise ZeroDivisionError")
-        except ZeroDivisionError as e:
-            passed += 1
-            print(f"[PASS] {label} raised ZeroDivisionError: {e}")
-
-    total = len(tests) + 2
-    print(f"\n{passed}/{total} tests passed.")
+def gcd(a, b):
+    """Return the greatest common divisor of a and b (Euclidean algorithm)."""
+    a, b = abs(a), abs(b)
+    while b:
+        a, b = b, a % b
+    return a
 
 
-if __name__ == "__main__":
-    main()
+def lcm(a, b):
+    """Return the least common multiple of a and b (0 if either is 0)."""
+    if a == 0 or b == 0:
+        return 0
+    return abs(a * b) // gcd(a, b)
+
+
+def fibonacci(count):
+    """Return a list of the first `count` Fibonacci numbers, starting 0, 1."""
+    if count < 0:
+        raise ValueError("Count must be non-negative.")
+    sequence = []
+    a, b = 0, 1
+    for _ in range(count):
+        sequence.append(a)
+        a, b = b, a + b
+    return sequence
+
+
+def is_prime(n):
+    """Return True if n is a prime number, otherwise False."""
+    if n < 2:
+        return False
+    if n % 2 == 0:
+        return n == 2
+    divisor = 3
+    while divisor * divisor <= n:
+        if n % divisor == 0:
+            return False
+        divisor += 2
+    return True
+
+
+def mean(numbers):
+    """Return the average of a list of numbers. Raises ValueError if empty."""
+    if not numbers:
+        raise ValueError("Cannot take the mean of an empty list.")
+    return sum(numbers) / len(numbers)
+
+
+def median(numbers):
+    """Return the middle value of a list of numbers. Raises ValueError if empty."""
+    if not numbers:
+        raise ValueError("Cannot take the median of an empty list.")
+    ordered = sorted(numbers)
+    middle = len(ordered) // 2
+    if len(ordered) % 2:
+        return ordered[middle]
+    return (ordered[middle - 1] + ordered[middle]) / 2
+
+
+
+
 
 
 # Testing Vibe-It PR integration
