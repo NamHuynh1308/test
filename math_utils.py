@@ -163,6 +163,20 @@ def hypotenuse(a, b):
     return math.sqrt(a ** 2 + b ** 2)
 
 
+def triangle_area(base, height):
+    """Return the area of a triangle. Raises ValueError if base or height is negative."""
+    if base < 0 or height < 0:
+        raise ValueError("Base and height must be non-negative.")
+    return base * height / 2
+
+
+def circle_circumference(radius):
+    """Return the circumference of a circle. Raises ValueError if radius is negative."""
+    if radius < 0:
+        raise ValueError("Radius must be non-negative.")
+    return 2 * math.pi * radius
+
+
 
 
 
