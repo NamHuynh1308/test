@@ -94,6 +94,33 @@ def median(numbers):
     return (ordered[middle - 1] + ordered[middle]) / 2
 
 
+def absolute_value(x):
+    """Return the absolute value of x."""
+    return -x if x < 0 else x
+
+
+def clamp(value, low, high):
+    """Return value limited to the range [low, high]. Raises ValueError if low > high."""
+    if low > high:
+        raise ValueError("low must not be greater than high.")
+    return max(low, min(value, high))
+
+
+def sign(x):
+    """Return 1 if x is positive, -1 if negative, and 0 if zero."""
+    if x > 0:
+        return 1
+    if x < 0:
+        return -1
+    return 0
+
+
+def distance(x1, y1, x2, y2):
+    """Return the straight-line distance between points (x1, y1) and (x2, y2)."""
+    return ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
+
+
+
 
 
 
