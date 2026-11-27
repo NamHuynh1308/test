@@ -1,0 +1,92 @@
+{
+  "schema": "vibeit.review-capsule",
+  "version": 1,
+  "id": "cd29a57b-0019-4b45-8276-c167290d3a9e",
+  "packageId": "ccb17783-6fc1-494b-b668-e3000f721c7f",
+  "createdAt": "2026-11-27T04:48:56.593Z",
+  "commit": "0e558199b0a9d5f981ac49616d37dd849681fae4",
+  "title": "random game",
+  "purpose": "create another file containing random gamesa",
+  "constraints": "",
+  "contributions": [
+    {
+      "id": "annotation-1795754816577-2-uxaw2x",
+      "path": "random_game.py",
+      "blob": "ac4464ea6f4703fe83ac24551ea1717bc1879e24",
+      "ranges": [
+        {
+          "startLine": 0,
+          "startCharacter": 0,
+          "endLine": 50,
+          "endCharacter": 64
+        }
+      ],
+      "contentHash": "adb48ba4502c6c114d0aa03b5874f3cc86778a0abd06abbef57fff50eb840f22",
+      "agent": "Claude",
+      "model": "claude-opus-5-5",
+      "provenance": "inferred-by-correlation",
+      "verificationStatus": "Untested",
+      "promptCount": 1,
+      "revisionCount": 1,
+      "prompts": [
+        "Now create another file about random game but no need to get the main yet"
+      ],
+      "revisions": [
+        {
+          "version": 1,
+          "recordedAt": "2026-11-27T04:46:56.577Z",
+          "source": "Claude",
+          "model": "claude-opus-5-5",
+          "provenance": "inferred-by-correlation",
+          "prompt": "Now create another file about random game but no need to get the main yet",
+          "code": "\"\"\"Small random-chance game helpers.\"\"\"\n\nimport random\n\nCHOICES = (\"rock\", \"paper\", \"scissors\")\nBEATS = {\"rock\": \"scissors\", \"paper\": \"rock\", \"scissors\": \"paper\"}\n\n\ndef roll_dice(sides=6, count=1):\n    \"\"\"Roll `count` dice with `sides` sides each and return the results as a list.\"\"\"\n    if sides < 2:\n        raise ValueError(\"A die must have at least 2 sides.\")\n    if count < 1:\n        raise ValueError(\"You must roll at least 1 die.\")\n    return [random.randint(1, sides) for _ in range(count)]\n\n\ndef flip_coin():\n    \"\"\"Return 'heads' or 'tails' at random.\"\"\"\n    return random.choice((\"heads\", \"tails\"))\n\n\ndef pick_secret_number(low=1, high=100):\n    \"\"\"Return a random secret number between low and high (inclusive).\"\"\"\n    if low > high:\n        raise ValueError(\"low must not be greater than high.\")\n    return random.randint(low, high)\n\n\ndef check_guess(guess, secret):\n    \"\"\"Compare a guess with the secret number and return 'too low', 'too high' or 'correct'.\"\"\"\n    if guess < secret:\n        return \"too low\"\n    if guess > secret:\n        return \"too high\"\n    return \"correct\"\n\n\ndef computer_choice():\n    \"\"\"Return a random rock-paper-scissors choice for the computer.\"\"\"\n    return random.choice(CHOICES)\n\n\ndef rps_winner(player, computer):\n    \"\"\"Return 'player', 'computer' or 'draw' for a rock-paper-scissors round.\"\"\"\n    player, computer = player.lower(), computer.lower()\n    if player not in CHOICES or computer not in CHOICES:\n        raise ValueError(f\"Choices must be one of: {', '.join(CHOICES)}.\")\n    if player == computer:\n        return \"draw\"\n    return \"player\" if BEATS[player] == computer else \"computer\""
+        }
+      ]
+    },
+    {
+      "id": "annotation-1795754857812-3-er21fa",
+      "path": "random_game.py",
+      "blob": "ac4464ea6f4703fe83ac24551ea1717bc1879e24",
+      "ranges": [
+        {
+          "startLine": 53,
+          "startCharacter": 0,
+          "endLine": 53,
+          "endCharacter": 37
+        },
+        {
+          "startLine": 55,
+          "startCharacter": 0,
+          "endLine": 92,
+          "endCharacter": 71
+        }
+      ],
+      "contentHash": "cde2ff20bebdc706b3af3a16c04611e17f61f7b2aebd9c845c59495c8668be7d",
+      "agent": "Claude",
+      "model": "claude-opus-5-5",
+      "provenance": "inferred-by-correlation",
+      "verificationStatus": "Untested",
+      "promptCount": 1,
+      "revisionCount": 1,
+      "prompts": [
+        "Continue another add another game in here"
+      ],
+      "revisions": [
+        {
+          "version": 1,
+          "recordedAt": "2026-11-27T04:47:37.812Z",
+          "source": "Claude",
+          "model": "claude-opus-5-5",
+          "provenance": "inferred-by-correlation",
+          "prompt": "Continue another add another game in here",
+          "code": "# --- Higher or Lower (card game) ---\n\nRANKS = (\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\")\nSUITS = (\"hearts\", \"diamonds\", \"clubs\", \"spades\")\n\n\ndef new_deck():\n    \"\"\"Return a shuffled 52-card deck as a list of (rank, suit) tuples.\"\"\"\n    deck = [(rank, suit) for suit in SUITS for rank in RANKS]\n    random.shuffle(deck)\n    return deck\n\n\ndef draw_card(deck):\n    \"\"\"Remove and return the top card of the deck. Raises ValueError if it is empty.\"\"\"\n    if not deck:\n        raise ValueError(\"The deck is empty.\")\n    return deck.pop()\n\n\ndef card_value(card):\n    \"\"\"Return the numeric value of a card: 2-10 as numbered, J=11, Q=12, K=13, A=14.\"\"\"\n    return RANKS.index(card[0]) + 2\n\n\ndef card_name(card):\n    \"\"\"Return a readable name for a card, such as 'Q of hearts'.\"\"\"\n    return f\"{card[0]} of {card[1]}\"\n\n\ndef check_higher_lower(guess, current, next_card):\n    \"\"\"Return 'correct', 'wrong' or 'tie' for a guess of 'higher' or 'lower'.\"\"\"\n    guess = guess.lower()\n    if guess not in (\"higher\", \"lower\"):\n        raise ValueError(\"Guess must be 'higher' or 'lower'.\")\n    current_value, next_value = card_value(current), card_value(next_card)\n    if current_value == next_value:\n        return \"tie\"\n    went_higher = next_value > current_value\n    return \"correct\" if went_higher == (guess == \"higher\") else \"wrong\""
+        }
+      ]
+    }
+  ],
+  "disclosure": {
+    "prompts": true,
+    "revisionCode": true
+  },
+  "warning": "Git matching confirms selected text exists at a commit; it does not prove AI authorship, tests, or the commit that introduced the change."
+}
